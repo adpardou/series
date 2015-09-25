@@ -6,4 +6,8 @@ En las diferentes ramas se encuentran las series correspondientes
 
 Intengrantes del grupo:
 Andrés David Pardo Uribe
+
 Camilo Andrés Silva Hernandez
+
+Marhta Juliana Pacheo Sanchez
+
