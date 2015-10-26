@@ -1,0 +1,39 @@
+int separar (int n) {
+ int r = 0;
+ while ( n > 0 ) {
+  r += (n % 10) * (n % 10);
+  n /= 10;
+ }
+ return r;
+}
+
+void setup ( ){
+  size(1000, 800);
+  background(255);
+  
+  int n = 32; //aca se escribe el número que se quiere verificar si es feliz
+  
+  ArrayList<Integer> arr = new ArrayList<Integer>();
+  arr.add(n);
+  
+  boolean feliz = true;
+  while ( n != 1 ) {
+   n = separar(n);
+   if (arr.indexOf(n) != -1) {
+   feliz = false;
+   break;
+   }
+   print(n + "\n");
+   arr.add(n);
+  }
+  
+  print(feliz);
+  
+  if ( !feliz ) {
+   print("no es feliz"); 
+  } else {
+   for (int i = 1; i < arr.size(); ++i){
+    line((i - 1)*100, arr.get(i - 1)*5, i*100, arr.get(i)*5); 
+   }
+  }
+}
