@@ -1,0 +1,58 @@
+import java.util.Arrays;
+
+abstract class Sequence {
+
+  abstract String author();
+
+  abstract String description();
+  
+  abstract int compute(int n);
+ 
+  int [] toArray(int n) {
+    int[] seq = new int[n];
+    for (int i=0; i<n; i++)
+      seq[i] = compute(i+1);
+    return seq;
+  }
+  
+  String toString(int n) {
+    return Arrays.toString(toArray(n));
+  }
+  
+  abstract void display(int n);
+   size(640, 720);
+  void barChart(int n) {
+    int[] seq = toArray(n);
+    stroke(0);
+    fill(0, 255, 255);
+    int g = 40, l = 80;
+    for ( int i = 0; i < seq.length; ++i ) {
+      rect(0, i * g, seq[i] * l, g);
+    }
+  }
+  
+  void lineChart(int n) {
+    int[] seq = toArray(n);
+    
+    int g = 40, l = 80;
+    stroke(0);
+    for ( int i = 1; i < n; ++i ) {
+      line(seq[i - 1] * l, i * g - g/2, seq[i] * l, (i + 1) * g - g/2);
+    }
+  }
+  
+  void curveFitting(int n) {
+    int[] seq = toArray(n);
+    int g = 40, l = 80;
+    
+    noFill();
+    stroke(255, 0, 0);
+    beginShape();
+    curveVertex(seq[0] * l, g/2);
+    for ( int i = 0; i < n; ++i ) {
+      curveVertex(seq[i] * l, i * g + g/2);
+    }
+    curveVertex(seq[n - 1] * l, n * g - g/2);
+    endShape();
+  }
+}
