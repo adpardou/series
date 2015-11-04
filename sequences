@@ -1,1 +1,25 @@
+Sequence sequence;
 
+int n = 3;
+void setup ( ) {
+  
+  sequence = new Baum();
+  
+  println(sequence.author());
+  println(sequence.description());
+  println(sequence.toArray(n));
+}  
+
+void draw ( ) {
+  background(255);
+  sequence.barChart(n);
+  sequence.lineChart(n);
+  sequence.curveFitting(n); 
+}
+
+void keyPressed ( ) {
+  if ( key == '1' ) ++n;
+  if ( key == '2' ) --n;
+  
+  println("Compute", n, ":", sequence.compute(n));
+}
